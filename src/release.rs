@@ -20,7 +20,9 @@ impl Release {
             *EPOCH_DATE + Duration::weeks((new_releases + incr - 1) * 6) - Duration::days(6);
 
         let mut version = semver::Version::new(1, 0, 0);
-        version.minor = version.minor.saturating_add_signed(new_releases + EPOCH_VERSION + incr);
+        version.minor = version
+            .minor
+            .saturating_add_signed(new_releases + EPOCH_VERSION + incr);
         Self {
             version,
             stable_on: release_date,
