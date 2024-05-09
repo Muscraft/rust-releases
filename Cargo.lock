@@ -334,7 +334,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust-versions"
+name = "rust-releases"
 version = "0.1.0"
 dependencies = [
  "chrono",

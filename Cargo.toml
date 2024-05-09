@@ -1,5 +1,5 @@
 [package]
-name = "rust-versions"
+name = "rust-releases"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.78.0"
