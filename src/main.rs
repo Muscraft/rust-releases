@@ -1,5 +1,3 @@
-#![feature(const_option)]
-
 use chrono::NaiveDate;
 use clap::Parser;
 use comfy_table::{Cell, CellAlignment, Table};

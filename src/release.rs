@@ -1,6 +1,7 @@
 use chrono::{Duration, NaiveDate, Utc};
+use once_cell::sync::Lazy;
 
-const EPOCH_DATE: NaiveDate = NaiveDate::from_ymd_opt(2015, 12, 10).unwrap();
+static EPOCH_DATE: Lazy<NaiveDate> = Lazy::new(|| NaiveDate::from_ymd_opt(2015, 12, 10).unwrap());
 /// The version release on the epoch date was `1.5.0`, or `5`
 const EPOCH_VERSION: i64 = 5;
 
@@ -13,10 +14,10 @@ pub struct Release {
 
 impl Release {
     pub fn new(incr: i64) -> Self {
-        let new_releases = (Utc::now().naive_utc().date() - EPOCH_DATE).num_weeks() / 6;
-        let release_date = EPOCH_DATE + Duration::weeks((new_releases + incr) * 6);
+        let new_releases = (Utc::now().naive_utc().date() - *EPOCH_DATE).num_weeks() / 6;
+        let release_date = *EPOCH_DATE + Duration::weeks((new_releases + incr) * 6);
         let branch_date =
-            EPOCH_DATE + Duration::weeks((new_releases + incr - 1) * 6) - Duration::days(6);
+            *EPOCH_DATE + Duration::weeks((new_releases + incr - 1) * 6) - Duration::days(6);
 
         let mut version = semver::Version::new(1, 0, 0);
         version.minor = version.minor.saturating_add_signed(new_releases + EPOCH_VERSION + incr);

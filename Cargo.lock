@@ -340,6 +340,7 @@ dependencies = [
  "chrono",
  "clap",
  "comfy-table",
+ "once_cell",
  "semver",
 ]
 
